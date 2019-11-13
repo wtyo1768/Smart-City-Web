@@ -45,6 +45,7 @@ export default {
     ChangeUnitMonth() {
       this.$data.month_btn = false;
       this.$data.date_btn = true;
+      this.$data.chartData.rows = this.$data.MonthData;
     }
   },
   data: function() {
@@ -53,7 +54,21 @@ export default {
       chi_btn: true,
       month_btn: false,
       date_btn: true,
-
+      MonthData: [
+        { 日期: "1月", 過去價格: 1293 },
+        { 日期: "2月", 過去價格: 1130 },
+        { 日期: "3月", 過去價格: 1623 },
+        { 日期: "4月", 過去價格: 2423 },
+        { 日期: "5月", 過去價格: 1492 },
+        { 日期: "5月", 未來價格: 1492 },
+        { 日期: "6月", 未來價格: 492 },
+        { 日期: "7月", 未來價格: 2193 },
+        { 日期: "8月", 未來價格: 3293 },
+        { 日期: "9月", 未來價格: 2130 },
+        { 日期: "10月", 未來價格: 1623 },
+        { 日期: "11月", 未來價格: 2423 },
+        { 日期: "12月", 未來價格: 3492 }
+      ],
       extend: {
         series: {
           smooth: false
@@ -114,7 +129,7 @@ export default {
 
 <style scoped>
 #outter-box {
-  height: 60%;
+  height: 100%;
   width: 90%;
   margin: auto;
   margin-top: 0;

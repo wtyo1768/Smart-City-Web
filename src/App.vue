@@ -50,6 +50,8 @@ export default {
   justify-content: center;
   align-items: center;
   padding-top: 0;
+  width : 100%;
+  height: 100%;
 }
 
 </style>
