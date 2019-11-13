@@ -20,7 +20,7 @@
       </v-btn>
     </div>
 
-    <ve-line legend-position="bottom" :data="chartData" :extend="extend"></ve-line>
+    <ve-line id="data-graph" legend-position="bottom" :data="chartData" :extend="extend"></ve-line>
   </div>
 </template>
 
@@ -52,8 +52,8 @@ export default {
     return {
       wu_btn: false,
       chi_btn: true,
-      month_btn: false,
-      date_btn: true,
+      month_btn: true,
+      date_btn: false,
       MonthData: [
         { 日期: "1月", 過去價格: 1293 },
         { 日期: "2月", 過去價格: 1130 },
@@ -138,5 +138,6 @@ export default {
   width: 500px;
   display: flex;
   justify-content: space-around;
+  margin: auto
 }
 </style>
