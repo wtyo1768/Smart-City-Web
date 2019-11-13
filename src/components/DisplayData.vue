@@ -3,16 +3,24 @@
     <div id="select-box">
       <v-btn @click="DisplayWu" color="primary" :outlined="wu_btn">
         <span class="mr-2">吳郭魚</span>
-        <v-icon>mdi-currency-usd</v-icon>
+        <v-icon>mdi-fish</v-icon>
       </v-btn>
       <!-- <v-spacer/> -->
       <v-btn @click="DisplayChi" color="primary" :outlined="chi_btn">
         <span class="mr-2">虱目魚</span>
+        <v-icon>mdi-fish</v-icon>
+      </v-btn>
+      <v-btn @click="ChangeUnitMonth" color="primary" :outlined="month_btn">
+        <span class="mr-2">月價格</span>
+        <v-icon>mdi-currency-usd</v-icon>
+      </v-btn>
+      <v-btn @click="ChangeUnitDate" color="primary" :outlined="date_btn">
+        <span class="mr-2">日價格</span>
         <v-icon>mdi-currency-usd</v-icon>
       </v-btn>
     </div>
 
-    <ve-line :data="chartData" :extend="extend"></ve-line>
+    <ve-line legend-position="bottom" :data="chartData" :extend="extend"></ve-line>
   </div>
 </template>
 
@@ -29,12 +37,23 @@ export default {
       this.$data.chartData.rows = this.$data.ChiData;
       this.$data.chi_btn = false;
       this.$data.wu_btn = true;
+    },
+    ChangeUnitDate() {
+      this.$data.date_btn = false;
+      this.$data.month_btn = true;
+    },
+    ChangeUnitMonth() {
+      this.$data.month_btn = false;
+      this.$data.date_btn = true;
     }
   },
   data: function() {
     return {
       wu_btn: false,
       chi_btn: true,
+      month_btn: false,
+      date_btn: true,
+
       extend: {
         series: {
           smooth: false
@@ -101,7 +120,7 @@ export default {
   margin-top: 0;
 }
 #select-box {
-  width: 250px;
+  width: 500px;
   display: flex;
   justify-content: space-around;
 }
