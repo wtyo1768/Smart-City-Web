@@ -29,7 +29,7 @@
         height="5"
         id="progress-bar"
         :indeterminate="true"
-      ></v-progress-linear> -->
+      ></v-progress-linear>-->
     </v-app-bar>
 
     <!-- main -->

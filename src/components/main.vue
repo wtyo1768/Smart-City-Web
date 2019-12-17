@@ -7,12 +7,14 @@
       legend-position="bottom"
       :data="chartData"
       :extend="extend"
-      :title="title"
     ></ve-line>
     <div id="q_btn">
       <v-btn @click="query" color="primary" outlined width="100%">
         <span class="mr-2">查詢價格</span>
       </v-btn>
+    </div>
+    <div id="updateMes">
+      <span class="mr-2">資料更新時間 2019/12/17 </span>
     </div>
     <v-snackbar v-model="snackbar" :multi-line="multiLine">
       <v-icon color="white">mdi-alert</v-icon>
@@ -107,8 +109,11 @@ export default {
         rows.push({
           日期: res.data.time,
           預測價格: res.data[`pred${i}`],
-          // 實際價格: this.history ? res.data[`ans${i}`] : null
-          實際價格: this.history ? res.data[`ans${i}`] : (i==1) ? res.data[`pred${i}`] : null
+          實際價格: this.history
+            ? res.data[`ans${i}`]
+            : i == 1
+            ? res.data[`pred${i}`]
+            : null
         });
         i++;
       }
@@ -132,12 +137,31 @@ export default {
     return {
       multiLine: true,
       snackbar: false,
+      lineColorSetting: {
+        預測價格: "black",
+        實際價格: "blue"
+      },
       extend: {
         series: {
           smooth: false
+          // itemStyle: {
+          //   normal: {
+          //     color : 'lightblue'
+          //     // color: params => {
+          //     //   return this.lineColorSetting[params["seriesName"]];
+          //     // }
+          //   }
+          // }
+          // lineStyle: {
+          //   color: params => {
+          //     console.log('h')
+          //     console.log(this.lineColorSetting[params["seriesName"]])
+          //   }
+          // }
         },
         legend: {
-          left: 20
+          left: 0,
+          bottom: 0
         }
       },
       yAxis: {
@@ -159,6 +183,13 @@ export default {
   width: 90%;
   margin: auto;
   margin-top: 0;
+}
+#updateMes{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0.75;
+  font-size: 3px;
 }
 </style>
 
