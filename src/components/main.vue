@@ -14,7 +14,10 @@
       </v-btn>
     </div>
     <div id="updateMes">
-      <span class="mr-2">資料更新時間 2019/12/17 </span>
+      <span class="mr-2">資料更新時間 2019/12/17</span>
+    </div>
+    <div id="system-clock">
+      <span>{{clock}}</span>
     </div>
     <v-snackbar v-model="snackbar" :multi-line="multiLine">
       <v-icon color="white">mdi-alert</v-icon>
@@ -46,13 +49,11 @@ export default {
       },
       set(rows) {
         store.commit("SET_ROWS", rows);
-        store.commit("SET_LOADING");
       }
     }
   },
   methods: {
     async query() {
-      store.commit("SET_LOADING");
       const dateformat = {
         month: "YYYY-MM",
         day: "YYYY-MM-DD",
@@ -144,20 +145,6 @@ export default {
       extend: {
         series: {
           smooth: false
-          // itemStyle: {
-          //   normal: {
-          //     color : 'lightblue'
-          //     // color: params => {
-          //     //   return this.lineColorSetting[params["seriesName"]];
-          //     // }
-          //   }
-          // }
-          // lineStyle: {
-          //   color: params => {
-          //     console.log('h')
-          //     console.log(this.lineColorSetting[params["seriesName"]])
-          //   }
-          // }
         },
         legend: {
           left: 0,
@@ -184,7 +171,7 @@ export default {
   margin: auto;
   margin-top: 0;
 }
-#updateMes{
+#updateMes {
   position: absolute;
   right: 0;
   bottom: 0;
