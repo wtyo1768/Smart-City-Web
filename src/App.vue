@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <!-- header -->
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
@@ -10,31 +11,44 @@
           transition="scale-transition"
           width="40"
         />
-        <span class="mr-2">Smart City</span>
+
+        <v-btn text>
+          <span class="mr-2">Fishery Prediction</span>
+        </v-btn>
       </div>
 
       <v-spacer></v-spacer>
 
       <v-btn text>
-        <span class="mr-2">Fishery Prediction</span>
+        <span class="mr-2">ncku smart city</span>
         <v-icon>mdi-crosshairs-gps</v-icon>
       </v-btn>
+      <v-progress-linear
+        v-show="progress_bar_loading"
+        color="teal"
+        height="5"
+        id="progress-bar"
+        :indeterminate="true"
+      ></v-progress-linear>
     </v-app-bar>
-    <!-- <v-spacer /> -->
+
+    <!-- main -->
     <v-content id="content-box">
-      <DisplayData />
+      <MainPage />
     </v-content>
   </v-app>
 </template>
 
 <script>
-import DisplayData from "./components/DisplayData.vue";
-
+import MainPage from "./components/main.vue";
+import { mapState } from "vuex";
 export default {
   name: "App",
-
+  computed: {
+    ...mapState(["progress_bar_loading"])
+  },
   components: {
-    DisplayData
+    MainPage
   },
 
   data: () => ({
@@ -44,14 +58,25 @@ export default {
 </script>
 
 <style scoped>
-
+#title {
+  height: 100%;
+  font-size: 40px;
+  font-family: monospace;
+  text-align: ;
+}
 #content-box {
   display: "flex";
   justify-content: center;
   align-items: center;
   padding-top: 0;
-  width : 100%;
+  width: 100%;
   height: 100%;
 }
-
+#progress-bar {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  bottom: -3px;
+  z-index: 100;
+}
 </style>
