@@ -52,7 +52,7 @@
 <script>
 import store from "../store";
 import { mapState } from "vuex";
-
+import moment from "moment";
 export default {
   name: "query_region",
   computed: {
@@ -62,6 +62,12 @@ export default {
         return this.date;
       },
       set(date) {
+        if (this.price_mode == "周價格")
+          while (moment(date).format("dddd") != "Saturday") {
+            date = moment(date, "YYYY-MM-DD")
+              .subtract(1, "days")
+              .format("YYYY-MM-DD");
+          }
         store.commit("SET_DATE", date);
       }
     }
@@ -112,7 +118,7 @@ export default {
   data: function() {
     return {
       prices: [{ title: "月價格" }, { title: "周價格" }, { title: "日價格" }],
-      menu : false,
+      menu: false,
       wu_btn: false,
       chi_btn: true,
       month_btn: true,
