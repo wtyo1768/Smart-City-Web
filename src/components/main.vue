@@ -7,6 +7,7 @@
       legend-position="bottom"
       :data="chartData"
       :extend="extend"
+      :title="title"
     ></ve-line>
     <div id="q_btn">
       <v-btn @click="query" color="primary" outlined width="100%">
@@ -80,23 +81,22 @@ export default {
         .subtract(h_point_number, this.price_mode + "s")
         .format(dateformat[this.price_mode]);
       // history price
-      if (this.history)
-        while (h_start_day != res.data.time) {
-          let res_h = await this.$ajax.get(
-            `/data?date=${h_start_day}&mode=${mode}`
-          );
-          h_start_day = moment(
-            h_start_day.split("-"),
-            dateformat[this.price_mode]
-          )
-            .add(1, this.price_mode + "s")
-            .format(dateformat[this.price_mode]);
-          rows.push({
-            日期: h_start_day,
-            預測價格: res_h.data["pred1"],
-            實際價格: res_h.data["ans1"]
-          });
-        }
+      while (h_start_day != res.data.time) {
+        let res_h = await this.$ajax.get(
+          `/data?date=${h_start_day}&mode=${mode}`
+        );
+        h_start_day = moment(
+          h_start_day.split("-"),
+          dateformat[this.price_mode]
+        )
+          .add(1, this.price_mode + "s")
+          .format(dateformat[this.price_mode]);
+        rows.push({
+          日期: h_start_day,
+          預測價格: this.history ? res_h.data["pred1"] : null,
+          實際價格: res_h.data["ans1"]
+        });
+      }
       // future price
       let i = 1;
       while (res.data[`pred${i}`]) {
@@ -107,7 +107,8 @@ export default {
         rows.push({
           日期: res.data.time,
           預測價格: res.data[`pred${i}`],
-          實際價格: res.data[`ans${i}`]
+          // 實際價格: this.history ? res.data[`ans${i}`] : null
+          實際價格: this.history ? res.data[`ans${i}`] : (i==1) ? res.data[`pred${i}`] : null
         });
         i++;
       }

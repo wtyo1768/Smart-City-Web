@@ -7,7 +7,7 @@ import axios from 'axios'
 
 Vue.use(VCharts)
 const instance = axios.create({
-  baseURL: 'http://luffy.ee.ncku.edu.tw:3000',
+  baseURL: 'https://luffy.ee.ncku.edu.tw:3000',
   timeout: 5000,
 });
 

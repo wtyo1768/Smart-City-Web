@@ -23,13 +23,13 @@
         <span class="mr-2">ncku smart city</span>
         <v-icon>mdi-crosshairs-gps</v-icon>
       </v-btn>
-      <v-progress-linear
-        v-show="progress_bar_loading"
-        color="teal"
+      <!-- <v-progress-linear
+        v-show="loading"
+        color="black"
         height="5"
         id="progress-bar"
         :indeterminate="true"
-      ></v-progress-linear>
+      ></v-progress-linear> -->
     </v-app-bar>
 
     <!-- main -->
@@ -45,7 +45,7 @@ import { mapState } from "vuex";
 export default {
   name: "App",
   computed: {
-    ...mapState(["progress_bar_loading"])
+    ...mapState(["loading"])
   },
   components: {
     MainPage
