@@ -6,7 +6,7 @@
         <v-img
           class="shrink mr-2"
           contain
-          src="./logo.png"
+          :src="logo1"
           transition="scale-transition"
           width="50"
         />
@@ -38,7 +38,7 @@
     <v-img
       class="shrink mr-2"
       contain
-      src="./logouc.png"
+      :src="logo2"
       transition="scale-transition"
       width="100"
       id="logo_uc"
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import logo1 from './logo.png'
+import logo2 from './logouc.png'
 import MainPage from "./components/main.vue";
 import { mapState } from "vuex";
 export default {
@@ -59,6 +61,8 @@ export default {
   },
 
   data: () => ({
+      logo1 : logo1,
+      logo2 : logo2,
     //
   })
 };
