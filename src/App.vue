@@ -38,7 +38,7 @@
     <v-img
       class="shrink mr-2"
       contain
-      src="./logo_uc.png"
+      src="./logouc.png"
       transition="scale-transition"
       width="100"
       id="logo_uc"

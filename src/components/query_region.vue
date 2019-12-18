@@ -4,7 +4,7 @@
       <div id="date-picker-box">
         <v-menu ref="menu" v-model="menu" :close-on-content-click="false">
           <template v-slot:activator="{ on }">
-            <v-btn v-on="on" color="primary">
+            <v-btn v-on="on" color="primary" outlined="false">
               <span class="mr-2">{{s_date || "選擇日期"}}</span>
               <v-icon>mdi-calendar-month</v-icon>
             </v-btn>
@@ -29,7 +29,7 @@
 
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn class="btn" color="primary" dark v-on="on">
+          <v-btn class="btn" color="primary" dark v-on="on" outlined="false">
             <span class="mr-2">{{price_mode ||"選擇單位" }}</span>
             <v-icon>mdi-currency-usd</v-icon>
           </v-btn>
