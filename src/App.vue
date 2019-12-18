@@ -4,12 +4,11 @@
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="./logo.png"
           transition="scale-transition"
-          width="40"
+          width="50"
         />
 
         <v-btn text>
@@ -36,6 +35,14 @@
     <v-content id="content-box">
       <MainPage />
     </v-content>
+    <v-img
+      class="shrink mr-2"
+      contain
+      src="./logo_uc.png"
+      transition="scale-transition"
+      width="100"
+      id="logo_uc"
+    />
   </v-app>
 </template>
 
@@ -58,11 +65,15 @@ export default {
 </script>
 
 <style scoped>
+#logo_uc {
+  position: absolute;
+  right : 10px;
+  bottom: 40px;
+}
 #title {
   height: 100%;
   font-size: 40px;
   font-family: monospace;
-  text-align: ;
 }
 #content-box {
   display: "flex";
@@ -71,12 +82,5 @@ export default {
   padding-top: 0;
   width: 100%;
   height: 100%;
-}
-#progress-bar {
-  position: absolute;
-  width: 100vw;
-  left: 0;
-  bottom: -3px;
-  z-index: 100;
 }
 </style>

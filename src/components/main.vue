@@ -13,12 +13,9 @@
         <span class="mr-2">查詢價格</span>
       </v-btn>
     </div>
-    <div id="updateMes">
+    <!-- <div id="updateMes">
       <span class="mr-2">資料更新時間 2019/12/17</span>
-    </div>
-    <div id="system-clock">
-      <span>{{clock}}</span>
-    </div>
+    </div> -->
     <v-snackbar v-model="snackbar" :multi-line="multiLine">
       <v-icon color="white">mdi-alert</v-icon>
       <span class="mr-2">{{alertmes}}</span>
