@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import logo1 from './logo.png'
-import logo2 from './logouc.png'
+import logo1 from '@/logo.png'
+import logo2 from '@/logouc.png'
 import MainPage from "./components/main.vue";
 import { mapState } from "vuex";
 export default {
